@@ -12,6 +12,7 @@
 - **其他**: TypeScript, Axios
 
 ## 目录结构
+```
 gaius-admin/
 │
 ├── sql/     #数据库sql
@@ -25,6 +26,7 @@ gaius-admin/
 │   ├── static/
 │   └── package.json
 └── package.json
+```
 ## 安装和运行
 
 ### 前端
