@@ -1,0 +1,16 @@
+.layout {
+  .layout-header {
+    display: flex;
+    justify-content: space-between;
+    height: $layout-header-height;
+    padding: 0 6px 0px 6px;
+  }
+  .layout-content {
+    box-sizing: border-box;
+    padding: $gap;
+    height: calc(100vh - $layout-header-height);
+    overflow-y: auto;
+  }
+  
+}
+

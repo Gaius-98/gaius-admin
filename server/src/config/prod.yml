@@ -1,0 +1,32 @@
+#生产环境配置
+db:
+  mysql:
+    host: localhost
+    username: admin
+    password: pwd
+    database: gaius_admin
+    port: 3306
+    synchronize: false
+    dateStrings: true
+jwt:
+  secret: gaius
+# redis 配置
+redis:
+  host: localhost
+  password: pwd
+  port: 6379
+  db: 2
+# 静态资源服务器配置
+static:
+  base_path: /static
+# upload上传文件配置
+upload:
+  #存放目录
+  file_path: ./static/uploads
+  #外部系统访问目录
+  request_path: /uploads
+#服务器配置
+serve:
+  protocol: 'http'
+  host: localhost
+  port: 8899

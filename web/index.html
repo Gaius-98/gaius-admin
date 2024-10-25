@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>%VITE_TITLE%</title>
+    <script src="/anime.min.js"></script>
+    <style>
+      .pre-loading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+      }
+      .pre-loading .grid{
+        display: flex;
+        justify-content: center;
+        color: #fff;
+      }
+      .circle{
+        pointer-events: none;
+        position: relative;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        padding: 5px;
+        margin: 2px;
+        border-radius: 50%;
+        background-color: #1677ffbb;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pre-loading">
+      <div class="grid">
+        <div class="circle el">g</div>
+        <div class="circle el">a</div>
+        <div class="circle el">i</div>
+        <div class="circle el">u</div>
+        <div class="circle el">s</div>
+        <div class="circle el">-</div>
+        <div class="circle el">a</div>
+        <div class="circle el">d</div>
+        <div class="circle el">m</div>
+        <div class="circle el">i</div>
+        <div class="circle el">n</div>
+      </div>
+    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+  <script>
+    anime({
+      targets: '.pre-loading .el',
+      scale: [
+        { value: .1, easing: 'easeOutSine', duration: 500 },
+        { value: 1, easing: 'easeInOutQuad', duration: 1200 }
+      ],
+      delay: anime.stagger(200, { grid: [14, 5], from: 'first' }),
+      loop:true
+    });
+  </script>
+</html>

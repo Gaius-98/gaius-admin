@@ -1,0 +1,40 @@
+/*头部高度*/
+$layout-header-height: 64px;
+/*间距*/
+$gap:10px;
+/*二倍间距*/
+$double-gap: calc(2 * $gap);
+/*一半间距*/
+$half-gap:calc($gap / 2);
+/* 全局样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  /* 宽度 */
+}
+
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #e3e4e67c;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #e3e4e6;
+}
+
+.ant-table-striped :deep(.table-striped) td {
+  background-color: #f4f4f4;
+}
+
+
+.search-area{
+  :deep(.ant-card-head){
+    min-height: 40px;
+    border-bottom: none;
+  }
+  :deep(.ant-card-body){
+    padding: $gap 24px;
+  }
+}
+
