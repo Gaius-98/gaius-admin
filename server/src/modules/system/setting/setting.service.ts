@@ -4,7 +4,7 @@ import { UpdateSettingDto } from './dto/update-setting.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Setting } from './entities/setting.entity';
 import { Like, Repository } from 'typeorm';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
 @Injectable()
 export class SettingService {

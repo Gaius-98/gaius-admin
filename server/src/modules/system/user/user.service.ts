@@ -6,7 +6,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository, In } from 'typeorm';
 import { User } from './entities/user.entity';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
+
 import { UserRole } from './entities/user.entity';
 import { RoleService } from '../role/role.service';
 import { OrganizationService } from '../organization/organization.service';

@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { LoginAuthDto } from './dto/create-auth.dto';
 import { UserService } from '../user/user.service';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import encrypt from 'src/common/utils/encrypt';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';

@@ -5,7 +5,7 @@ import { Role, RoleMenu } from './entities/role.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import PaginationDto from 'src/common/dto/pagination.dto';
 import { In } from 'typeorm';
 @Injectable()

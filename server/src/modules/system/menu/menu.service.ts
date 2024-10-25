@@ -5,7 +5,7 @@ import { Menu } from './entities/menu.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Like, Not, Repository } from 'typeorm';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import { buildTree } from 'src/common/utils/utils';
 import { Request } from 'express';
 import { AuthEnum } from 'src/common/enum';

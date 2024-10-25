@@ -6,7 +6,7 @@ import { Repository, Like } from 'typeorm';
 import { Organization } from './entities/organization.entity';
 import { HttpException } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
 import { buildTree } from 'src/common/utils/utils';
 import { AuthEnum } from 'src/common/enum';

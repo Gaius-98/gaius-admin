@@ -3,7 +3,7 @@ import { CreateNoticeDto, SearchNoticeDto } from './dto/create-notice.dto';
 import { UpdateNoticeDto } from './dto/update-notice.dto';
 import { Notice, NoticeUser } from './entities/notice.entity';
 import { Like, Repository, Between, MoreThanOrEqual } from 'typeorm';
-import { ApiErrorCode } from 'src/common/model/IHttp';
+import { ApiErrorCode } from 'src/common/enum';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthEnum } from 'src/common/enum';
