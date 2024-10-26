@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateOrganizationDto } from './dto/create-organization.dto';
-import { UpdateOrganizationDto } from './dto/update-organization.dto';
+import {
+  CreateOrganizationDto,
+  UpdateOrganizationDto,
+  OrgTreeDto,
+} from './dto/organization.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Like } from 'typeorm';
 import { Organization } from './entities/organization.entity';
@@ -104,7 +107,7 @@ export class OrganizationService {
       throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-  async findAllByUser(req: Request, keyword = '') {
+  async findAllByUser(req: Request, keyword = ''): Promise<OrgTreeDto[]> {
     const roles = req[AuthEnum.AUTH_REQUEST_USER_KEY].roles as Role[];
     const org = req[AuthEnum.AUTH_REQUEST_USER_KEY].org as Organization;
     const dataPerms = roles.map((e) => e.dataPerm);
