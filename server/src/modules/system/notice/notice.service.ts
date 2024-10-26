@@ -1,6 +1,9 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import { CreateNoticeDto, SearchNoticeDto } from './dto/create-notice.dto';
-import { UpdateNoticeDto } from './dto/update-notice.dto';
+import {
+  CreateNoticeDto,
+  SearchNoticeDto,
+  UpdateNoticeDto,
+} from './dto/notice.dto';
 import { Notice, NoticeUser } from './entities/notice.entity';
 import { Like, Repository, Between, MoreThanOrEqual } from 'typeorm';
 import { ApiErrorCode } from 'src/common/enum';
