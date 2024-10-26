@@ -14,23 +14,37 @@ import { LoginAuthDto } from './dto/create-auth.dto';
 import { Public } from 'src/common/decorator/public/public.decorator';
 import { Skip } from 'src/common/decorator/skip/skip.decorator';
 import { Request } from 'express';
-import { Operation } from 'src/common/decorator/operation/operation.decorator';
 import { AuthEnum } from 'src/common/enum';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiResponse,
+  ApiQuery,
+  ApiTags,
+  ApiOperation,
+} from '@nestjs/swagger';
+@ApiTags('鉴权模块')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @ApiOperation({ summary: '登录' })
+  @ApiBody({ type: LoginAuthDto })
   @Public()
   @Post('login')
   login(@Body() loginAuthDto: LoginAuthDto, @Req() req: Request) {
     return this.authService.login(loginAuthDto, req);
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '获取用户信息' })
   @Get('userInfo')
   getUserInfo(@Req() req: Request) {
     return this.authService.getDetail(req);
   }
 
   @Public()
+  @ApiOperation({ summary: '获取验证码' })
   @Get('captcha')
   @Skip()
   getCaptcha(@Res() res) {
