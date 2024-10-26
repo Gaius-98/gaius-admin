@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDictDto, CreateDictDataDto } from './dto/create-dict.dto';
-import { UpdateDictDto } from './dto/update-dict.dto';
+import {
+  CreateDictDto,
+  CreateDictDataDto,
+  UpdateDictDto,
+  SearchDictDto,
+} from './dto/dict.dto';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { DictType, DictData } from './entities/dict.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository, In, QueryBuilder } from 'typeorm';
 import { ApiErrorCode } from 'src/common/enum';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
-import { SearchDictDto } from './dto/search-dict.dto';
 @Injectable()
 export class DictService {
   constructor(
