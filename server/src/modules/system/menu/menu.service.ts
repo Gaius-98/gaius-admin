@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateMenuDto } from './dto/create-menu.dto';
-import { UpdateMenuDto } from './dto/update-menu.dto';
+import { CreateMenuDto, UpdateMenuDto } from './dto/menu.dto';
 import { Menu } from './entities/menu.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Like, Not, Repository } from 'typeorm';
@@ -57,29 +56,7 @@ export class MenuService {
       throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-  /**
-   *  应用端 根据用户返回当前用户已启用的菜单
-   * @param username
-   * @returns
-   */
-  async findAllByUser(username: string) {
-    const menuList = await this.menuRepository.find({
-      where: {
-        status: '1',
-      },
-      order: {
-        sortNum: 'ASC',
-      },
-    });
 
-    //超级管理员 不需要过滤菜单
-    // if (!roleInfo.isSuper) {
-    //   menuList = menuList.filter((menu) => {
-    //     return roleInfo.roleValue.includes(menu.id);
-    //   });
-    // }
-    return this.buildMenuTree(menuList as MenuItem[], null) as Menu[];
-  }
   async findOne(id: string) {
     const menu = await this.menuRepository.findOne({
       where: {

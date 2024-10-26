@@ -10,15 +10,29 @@ import {
   Req,
 } from '@nestjs/common';
 import { MenuService } from './menu.service';
-import { CreateMenuDto } from './dto/create-menu.dto';
-import { UpdateMenuDto } from './dto/update-menu.dto';
+import { CreateMenuDto, MenuDirDto, UpdateMenuDto } from './dto/menu.dto';
 import { Request } from 'express';
 import { Permission } from 'src/common/decorator/permission/permission.decorator';
 import { Operation } from 'src/common/decorator/operation/operation.decorator';
 import { OptTypeEnum } from 'src/common/enum/opt.enum';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiResponse,
+  ApiQuery,
+  ApiTags,
+  ApiOperation,
+} from '@nestjs/swagger';
+import { ResListDto } from 'src/common/dto/pagination.dto';
+@ApiTags('菜单管理')
 @Controller('menu')
 export class MenuController {
   constructor(private readonly menuService: MenuService) {}
+
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '创建菜单' })
+  @ApiBody({ type: CreateMenuDto })
+  @ApiResponse({ status: 200, description: '创建成功' })
   @Operation({
     module: '菜单管理',
     action: OptTypeEnum.INSERT,
@@ -29,22 +43,33 @@ export class MenuController {
     return this.menuService.create(createMenuDto);
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '菜单列表' })
+  @ApiResponse({
+    status: 200,
+    description: '请求成功',
+    type: ResListDto<UpdateMenuDto>,
+  })
   @Permission('system:menu:list')
   @Get('list')
   findAll(@Query('keyword') keyword: string) {
     return this.menuService.findAll(keyword);
   }
 
-  @Get('user/list')
-  findMenuByUser(@Req() req: Request) {
-    return this.menuService.findAllByUser(req['username']);
-  }
-
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '菜单详情' })
+  @ApiQuery({ name: 'id', required: true })
+  @ApiResponse({ status: 200, description: '请求成功', type: UpdateMenuDto })
   @Permission('system:menu:detail')
   @Get('detail')
   findOne(@Query('id') id: string) {
     return this.menuService.findOne(id);
   }
+
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '编辑菜单' })
+  @ApiBody({ type: UpdateMenuDto })
+  @ApiResponse({ status: 200, description: '更新成功' })
   @Operation({
     module: '菜单管理',
     action: OptTypeEnum.UPDATE,
@@ -54,6 +79,11 @@ export class MenuController {
   update(@Body() updateMenuDto: UpdateMenuDto) {
     return this.menuService.update(updateMenuDto);
   }
+
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '删除菜单' })
+  @ApiQuery({ name: 'id', required: true })
+  @ApiResponse({ status: 200, description: '删除成功' })
   @Operation({
     module: '菜单管理',
     action: OptTypeEnum.DELETE,
@@ -63,18 +93,28 @@ export class MenuController {
   remove(@Query('id') id: string) {
     return this.menuService.remove(id);
   }
+
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '获取所有菜单目录' })
+  @ApiResponse({ status: 200, type: MenuDirDto, isArray: true })
   @Get('directory')
   getAllDirectory() {
     return this.menuService.findAllDirectory();
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '获取所有菜单' })
+  @ApiResponse({ status: 200, type: MenuDirDto, isArray: true })
   @Get('all')
   getAllMenu() {
     return this.menuService.findAllMenu();
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({ summary: '通过用户获取菜单' })
+  @ApiResponse({ status: 200, type: MenuDirDto, isArray: true })
   @Get()
-  getMent(@Req() req: Request) {
+  getMenu(@Req() req: Request) {
     return this.menuService.findSysMenuByUser(req);
   }
 }
