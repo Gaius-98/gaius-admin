@@ -58,23 +58,25 @@ import { reactive, ref, onMounted } from 'vue'
 import { useSystemStore } from '@/stores/system'
 import { storeToRefs } from 'pinia'
 import api from './api'
-import { useRouter } from 'vue-router'
 import auth from '@/utils/auth'
 import { UserOutlined, LockOutlined, SafetyOutlined } from '@ant-design/icons-vue'
+import jump from '@/utils/jump'
 const systemStore = useSystemStore()
-const { themeCfg, systemSetting } = storeToRefs(systemStore)
+const { startUp } = systemStore
+const { themeCfg, systemSetting, menuTree } = storeToRefs(systemStore)
 const authForm = reactive({
   username: 'test',
   password: 'test',
   captcha: ''
 })
-const router = useRouter()
 const onLogin = () => {
   api.login(authForm).then((res) => {
     const { code, data } = res
     if (code == 200) {
       auth.set(data)
-      router.push('/home')
+      startUp().then(() => {
+        jump(menuTree.value[0])
+      })
     }
   })
 }
