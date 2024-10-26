@@ -1,6 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateSettingDto, SearchSettingDto } from './dto/create-setting.dto';
-import { UpdateSettingDto } from './dto/update-setting.dto';
+import {
+  CreateSettingDto,
+  UpdateSettingDto,
+  SearchSettingDto,
+} from './dto/setting.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Setting } from './entities/setting.entity';
 import { Like, Repository } from 'typeorm';
