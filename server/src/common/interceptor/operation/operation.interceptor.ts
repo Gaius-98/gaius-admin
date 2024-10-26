@@ -56,7 +56,7 @@ export class OperationInterceptor implements NestInterceptor {
         moduleName,
         funcName,
         optModule,
-        optType,
+        optType: optType as any,
         resStatus: '1',
         resTime: '0s',
         res: '',
