@@ -7,7 +7,7 @@ import { Like, Repository, In, QueryBuilder, Between } from 'typeorm';
 import { Request } from 'express';
 import { AuthEnum } from 'src/common/enum';
 import { User } from '../user/entities/user.entity';
-import { SearchLoginLogDto } from './dto/create-login-log.dto';
+import { SearchLoginLogDto } from './dto/login-log.dto';
 import { HttpException } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common';
 import { getIp } from 'src/common/utils/utils';
