@@ -61,11 +61,12 @@ const findMenuIdByPath = (path: string, data: ResMenuItem[]): string | undefined
   }
 }
 watch(
-  () => route.path,
+  () => route.query,
   () => {
-    const id = findMenuIdByPath(route.path, menuTree.value)
+    const { menuId: id } = route.query
+
     if (id) {
-      selectedKeys.value = [id]
+      selectedKeys.value = [id as string]
     }
   },
   {

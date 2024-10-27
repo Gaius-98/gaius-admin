@@ -6,7 +6,10 @@ export default (data: Partial<ResMenuItem>) => {
     case 'front':
       if (openType == '_self') {
         router.push({
-          path: address
+          path: address,
+          query:{
+            menuId:data.id
+          }
         })
       } else if (openType == '_blank') {
         window.open(address, '_blank')
@@ -16,7 +19,8 @@ export default (data: Partial<ResMenuItem>) => {
       router.push({
         path: '/apply/iframe',
         query: {
-          id: encodeURIComponent(address!)
+          id: encodeURIComponent(address!),
+          menuId:data.id
         }
       })
       break
