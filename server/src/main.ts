@@ -18,9 +18,8 @@ async function bootstrap() {
     .addTag('gaius-admin')
     .addBearerAuth()
     .build();
-  const documentFactory = () =>
-    SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, documentFactory);
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api', app, document);
   const port = configSrv.get('serve.port') || 3000;
   app.useStaticAssets(join(__dirname, '../', 'static'), {
     prefix: '/static',

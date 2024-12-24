@@ -12,6 +12,14 @@ export interface Response<T> {
   data: T;
 }
 
+/**
+ * 转换拦截器，用于统一返回数据格式。
+ *
+ * @export
+ * @class TransformInterceptor
+ * @implements {NestInterceptor}
+ * @template T
+ */
 @Injectable()
 export class TransformInterceptor<T>
   implements NestInterceptor<T, Response<T>>

@@ -1,3 +1,6 @@
+/**
+ * 用户信息枚举
+ */
 export enum AuthEnum {
   /**
    * redis缓存用户token前缀

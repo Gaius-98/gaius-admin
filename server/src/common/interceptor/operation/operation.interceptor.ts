@@ -11,13 +11,21 @@ import { Reflector } from '@nestjs/core';
 import { getIp } from 'src/common/utils/utils';
 import { Request } from 'express';
 import { OperationType } from 'src/common/decorator/operation/operation.decorator';
-import { geoLocationService } from 'src/common/utils/geoip/geoLocation.service';
+import { GeoLocationService } from 'src/common/utils/geoip/geoLocation.service';
 import { OperationLogService } from 'src/modules/system/operation-log/operation-log.service';
+
+/**
+ * 记录操作日志
+ *
+ * @export
+ * @class OperationInterceptor
+ * @implements {NestInterceptor}
+ */
 @Injectable()
 export class OperationInterceptor implements NestInterceptor {
   constructor(
     private reflector: Reflector,
-    private locationSrv: geoLocationService,
+    private locationSrv: GeoLocationService,
     private OptLogSrv: OperationLogService,
   ) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {

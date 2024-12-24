@@ -5,13 +5,20 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { Request } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
 import { AuthEnum } from 'src/common/enum';
 import { extractTokenFromHeader } from 'src/common/utils/utils';
 import { RedisService } from 'src/modules/redis/redis.service';
+
+/**
+ * 认证守卫。
+ *
+ * @export
+ * @class AuthGuard
+ * @implements {CanActivate}
+ */
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(

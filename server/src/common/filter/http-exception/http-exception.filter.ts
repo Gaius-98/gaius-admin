@@ -6,6 +6,14 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ApiException } from './api.exception';
+
+/**
+ * HTTP 异常过滤器。
+ *
+ * @export
+ * @class HttpExceptionFilter
+ * @implements {ExceptionFilter}
+ */
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {

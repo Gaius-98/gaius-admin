@@ -1,3 +1,6 @@
+/**
+ * 数据权限枚举
+ */
 export enum DataPermEnum {
   /**
    * 全部数据权限

@@ -5,12 +5,18 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { Request } from 'express';
 
 import { Reflector } from '@nestjs/core';
 import { AuthEnum } from 'src/common/enum';
 import { RedisService } from 'src/modules/redis/redis.service';
 
+/**
+ * 权限守卫。
+ *
+ * @export
+ * @class PermissionGuard
+ * @implements {CanActivate}
+ */
 @Injectable()
 export class PermissionGuard implements CanActivate {
   constructor(

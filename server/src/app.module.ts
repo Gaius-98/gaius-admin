@@ -26,7 +26,7 @@ import { RedisModule } from './modules/redis/redie.module';
 import { RedisClientOptions } from '@liaoliaots/nestjs-redis';
 import { SystemInfoModule } from './modules/system/system-info/system-info.module';
 import { OperationInterceptor } from './common/interceptor/operation/operation.interceptor';
-import { geoLocationService } from './common/utils/geoip/geoLocation.service';
+import { GeoLocationService } from './common/utils/geoip/geoLocation.service';
 import IP2Region from 'ip2region';
 import { OperationLogModule } from './modules/system/operation-log/operation-log.module';
 @Module({
@@ -106,7 +106,7 @@ import { OperationLogModule } from './modules/system/operation-log/operation-log
   providers: [
     AppService,
     IP2Region,
-    geoLocationService,
+    GeoLocationService,
 
     {
       provide: APP_GUARD,
