@@ -1,5 +1,6 @@
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+
 export class CreateDictDto {
   @ApiPropertyOptional()
   remark?: string;
@@ -10,6 +11,7 @@ export class CreateDictDto {
   @ApiProperty()
   status: string;
 }
+
 export class CreateDictDataDto {
   @ApiProperty()
   label: string;

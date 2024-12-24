@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { LoginAuthDto } from './dto/create-auth.dto';
 import { UserService } from '../user/user.service';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
@@ -33,7 +33,12 @@ export class AuthService {
   ) {}
   async login(loginAuthDto: LoginAuthDto, req: Request) {
     const { username, password, captcha } = loginAuthDto;
-    const user = await this.userSrv.findOneByUserName(username);
+    let user;
+    try {
+      user = await this.userSrv.findOneByUserName(username);
+    } catch (error) {
+      throw new ApiException('此用户不存在', ApiErrorCode.ERROR_OTHER);
+    }
     const captchaCode = req.cookies[AuthEnum.AUTH_REQUEST_COOKIE_CAPTCHA];
     if (captchaCode == captcha) {
       if (user) {

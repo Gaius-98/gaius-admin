@@ -17,7 +17,7 @@ export class RoleService {
   ) {}
   async create(createRoleDto: CreateRoleDto) {
     const { roleMenus } = createRoleDto;
-    const role = await this.roleRepository.create(createRoleDto);
+    const role = this.roleRepository.create(createRoleDto);
     try {
       const { roleId } = await this.roleRepository.save(role);
       await this.createRoleMenus(roleId, roleMenus);

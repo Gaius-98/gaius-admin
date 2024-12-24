@@ -22,7 +22,7 @@ export class NoticeService {
   ) {}
   async create(createNoticeDto: CreateNoticeDto, req: Request) {
     const userId = req[AuthEnum.AUTH_REQUEST_USER_KEY].user.userId;
-    const notice = await this.noticeRepository.create({
+    const notice = this.noticeRepository.create({
       ...createNoticeDto,
       createBy: userId,
     });
@@ -85,7 +85,7 @@ export class NoticeService {
         };
       });
 
-      const list = await this.noticeUserRepository.create(noticeListByUser);
+      const list = this.noticeUserRepository.create(noticeListByUser);
 
       await this.noticeUserRepository.save(list);
     } catch (error) {

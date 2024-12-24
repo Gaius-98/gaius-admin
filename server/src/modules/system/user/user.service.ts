@@ -24,7 +24,7 @@ export class UserService {
   async create(createUserDto: CreateUserDto) {
     try {
       const { roleIds } = createUserDto;
-      const user = await this.userRepository.create(createUserDto);
+      const user =  this.userRepository.create(createUserDto);
       const { userId } = await this.userRepository.save(user);
       await this.createUserRole(userId, roleIds);
       return '新增成功';

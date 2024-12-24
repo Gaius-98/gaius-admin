@@ -8,7 +8,7 @@ import {
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { DictType, DictData } from './entities/dict.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Like, Repository, In, QueryBuilder } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { ApiErrorCode } from 'src/common/enum';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
 @Injectable()
@@ -20,7 +20,7 @@ export class DictService {
     private dictDataRepository: Repository<DictData>,
   ) {}
   async create(createDictDto: CreateDictDto) {
-    const dict = await this.dictTypeRepository.create(createDictDto);
+    const dict = this.dictTypeRepository.create(createDictDto);
     try {
       await this.dictTypeRepository.save(dict);
       return '添加成功';
@@ -34,7 +34,7 @@ export class DictService {
         dictType: createDictData.dictType,
       },
     });
-    const dictData = await this.dictDataRepository.create({
+    const dictData = this.dictDataRepository.create({
       ...createDictData,
       dictTypeId: dictType.id,
     });

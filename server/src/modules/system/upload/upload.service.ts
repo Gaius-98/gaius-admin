@@ -22,7 +22,7 @@ export class UploadService {
       this.configSrv.get('upload.request_path');
     createFileDto.path = `${uploadBasePath}/${createFileDto.filename}`;
     createFileDto.originalname = decodeURIComponent(createFileDto.originalname);
-    const file = await this.uploadRepository.create(createFileDto);
+    const file = this.uploadRepository.create(createFileDto);
     try {
       return await this.uploadRepository.save(file);
     } catch (error) {

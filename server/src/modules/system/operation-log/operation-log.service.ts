@@ -17,7 +17,7 @@ export class OperationLogService {
   ) {}
   async create(createOperationLogDto: CreateOperationLogDto) {
     try {
-      const optLog = await this.optLogRepository.create(createOperationLogDto);
+      const optLog = this.optLogRepository.create(createOperationLogDto);
       await this.optLogRepository.save(optLog);
     } catch (error) {
       throw new HttpException(error, HttpStatus.INTERNAL_SERVER_ERROR);

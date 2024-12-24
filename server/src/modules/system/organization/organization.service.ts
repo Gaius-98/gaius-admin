@@ -23,7 +23,7 @@ export class OrganizationService {
     private orgRepository: Repository<Organization>,
   ) {}
   async create(createOrganizationDto: CreateOrganizationDto) {
-    const org = await this.orgRepository.create(createOrganizationDto);
+    const org = this.orgRepository.create(createOrganizationDto);
     try {
       const parent = await this.orgRepository.findOne({
         where: {

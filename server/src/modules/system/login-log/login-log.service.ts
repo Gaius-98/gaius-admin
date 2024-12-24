@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as useragent from 'useragent';
 import { LoginLog } from './entities/login-log.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { geoLocationService } from 'src/common/utils/geoip/geoLocation.service';
+import { GeoLocationService } from 'src/common/utils/geoip/geoLocation.service';
 import { Like, Repository, In, QueryBuilder, Between } from 'typeorm';
 import { Request } from 'express';
 import { AuthEnum } from 'src/common/enum';
@@ -14,7 +14,7 @@ import { getIp } from 'src/common/utils/utils';
 @Injectable()
 export class LoginLogService {
   constructor(
-    private locationSrv: geoLocationService,
+    private locationSrv: GeoLocationService,
     @InjectRepository(LoginLog)
     private LogRepository: Repository<LoginLog>,
   ) {}
@@ -24,7 +24,7 @@ export class LoginLogService {
     const address = this.locationSrv.getLocationByIp(ip);
     const userAgent = useragent.parse(req.headers['user-agent']);
 
-    const logData = await this.LogRepository.create({
+    const logData = this.LogRepository.create({
       ip,
       address,
       browser: userAgent.toAgent(),

@@ -28,7 +28,7 @@ export class MenuService {
     private menuRepository: Repository<Menu>,
   ) {}
   async create(createMenuDto: CreateMenuDto) {
-    const menu = await this.menuRepository.create(createMenuDto);
+    const menu = this.menuRepository.create(createMenuDto);
     try {
       await this.menuRepository.save(menu);
       return '添加成功';

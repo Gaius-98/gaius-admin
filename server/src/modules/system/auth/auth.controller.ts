@@ -1,28 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Req,
-  Res,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/create-auth.dto';
 import { Public } from 'src/common/decorator/public/public.decorator';
 import { Skip } from 'src/common/decorator/skip/skip.decorator';
 import { Request } from 'express';
 import { AuthEnum } from 'src/common/enum';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiResponse,
-  ApiQuery,
-  ApiTags,
-  ApiOperation,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiTags, ApiOperation } from '@nestjs/swagger';
 @ApiTags('鉴权模块')
 @Controller('auth')
 export class AuthController {

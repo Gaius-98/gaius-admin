@@ -16,7 +16,7 @@ export class SettingService {
     private settingRepository: Repository<Setting>,
   ) {}
   async create(createSettingDto: CreateSettingDto) {
-    const setting = await this.settingRepository.create(createSettingDto);
+    const setting = this.settingRepository.create(createSettingDto);
     try {
       return await this.settingRepository.save(setting);
     } catch (error) {

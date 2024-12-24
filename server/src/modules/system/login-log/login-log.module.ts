@@ -3,11 +3,11 @@ import { LoginLogService } from './login-log.service';
 import { LoginLogController } from './login-log.controller';
 import { LoginLog } from './entities/login-log.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { geoLocationService } from 'src/common/utils/geoip/geoLocation.service';
+import { GeoLocationService } from 'src/common/utils/geoip/geoLocation.service';
 import IP2Region from 'ip2region';
 @Module({
   controllers: [LoginLogController],
-  providers: [LoginLogService, geoLocationService, IP2Region],
+  providers: [LoginLogService, GeoLocationService, IP2Region],
   imports: [TypeOrmModule.forFeature([LoginLog])],
   exports: [LoginLogService],
 })
