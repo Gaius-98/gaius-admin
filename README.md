@@ -68,4 +68,4 @@ gaius-admin/
 ### 联系方式
    有使用问题或者建议,请联系邮箱(2388838628@qq.com)
    如果对你有帮助的话,麻烦:star2:   
-### [使用手册](http://120.26.161.36:8080/project/gaius-admin/)
+### [使用手册](https://gaius-98.github.io/gaius-blog/project/gaius-admin/) 
